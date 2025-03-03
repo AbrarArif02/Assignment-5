@@ -156,7 +156,7 @@
           const notification = document.createElement("div");
           const currentTime = new Date().toLocaleTimeString();
           notification.classList.add("history-notification");
-          notification.innerHTML = `You have completed the task: <b>${title}</b> at ${currentTime}`;
+          notification.innerHTML = `You have completed the task ${title} at ${currentTime}`;
           historyNotifications.appendChild(notification);
 
           alert(`You have completed your task: ${title}`);

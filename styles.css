@@ -73,6 +73,11 @@ body {
     align-items: center;
     justify-content: center;
     margin-right: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.circle-img:hover {
+    transform: scale(1.2);
 }
 
 .circle-img img {
@@ -257,6 +262,8 @@ p {
 .sidebyside {
     display: flex;
     justify-content: space-between;
+    border-top: 2px dashed grey;
+    padding-top: 5px;
 }
 
 .history-container {
@@ -293,6 +300,8 @@ p {
     overflow-y: auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-top: 2px dashed grey;
+    padding-top: 20px;
 }
 
 .history-notification {
@@ -313,4 +322,15 @@ p {
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-}    
+}   
+
+#current-date {
+    font-weight: bold;
+    color: black;
+    font-size: 15px;
+}
+
+#current-day {
+    color: gray;
+    margin-right: 5px;
+}
