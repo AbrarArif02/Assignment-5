@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevBoard</title>
+    <link rel="icon" href="assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="left-side">
+          <img src="assets/logo.png" class="nav-img">
+          <span class="nav-text">Dev<b>Board</b></span>
+        </div>
+        <div class="right-side">
+          <div class="counter">
+            <img src="assets/checkbox.png">
+            <span id="task-count">0</span>
+        </div>
+          <div class="circle-img">
+            <img src="assets/theme-btn.png">
+          </div>
+        </div>
+    </div>    
+
+    <div class="adjustment">
+    <div class="main-card">
+        <div class="top-container">
+            <div class="top-card">
+                <div class="backgroundc">
+                  <img src="assets/checkbox.png">
+                </div>
+                <div class="textfix">Task Assigned <h2 id="tasks-assigned">06</h2></div>
+            </div>
+            <div class="top-card large">
+                <img src="assets/board.png" class="mediumimage">
+                <div onclick="goToBlogs()">Discover Something <br>New Today!</div>
+            </div>
+            <div class="top-card medium">
+                <div class="backgroundc">
+                    <img src="assets/calender.png">
+                </div>
+                <div class="date" id="current-day">Day</div>
+                <div class="full-date" id="current-date"><br>Date</div>
+            </div>
+        </div>
+
+        <div class="container-wrapper">
+            <div class="container">
+                <div class="card">
+                    <div class="header">ShopEase</div>
+                    <div class="title">Fix Mobile Button Issue</div>
+                    <div class="description">Debug using Chrome DevTools, check for overlapping...</div>
+                    <div class="sidebyside">   
+                        <div class="deadline">Deadline<p>21 March 2025</p></div>
+                        <button class="button" onclick="toggleComplete(this, 'Fix Mobile Button Issue')">Completed</button>
+                      </div>
+                </div>
+                <div class="card">
+                    <div class="header">CloudSync</div>
+                    <div class="title">Add Dark Mode</div>
+                    <div class="description">Store the user's preference in localStorage...</div>
+                    <div class="sidebyside">   
+                        <div class="deadline">Deadline<p>21 March 2025</p></div>
+                        <button class="button" onclick="toggleComplete(this, 'Add Dark Mode')">Completed</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="header">SwiftPay</div>
+                    <div class="title">Optimize Home Page</div>
+                    <div class="description">Debug using Chrome DevTools, check for overlapping...</div>
+                    <div class="sidebyside">   
+                        <div class="deadline">Deadline<p>21 March 2025</p></div>
+                        <button class="button" onclick="toggleComplete(this, 'Optimize Home Page')">Completed</button>
+                      </div>
+                </div>
+                <div class="card">
+                    <div class="header">Meta</div>
+                    <div class="title">Add new emoji ✋</div>
+                    <div class="description">Debug using Chrome DevTools, check for overlapping...</div>
+                    <div class="sidebyside">   
+                        <div class="deadline">Deadline<p>21 March 2025</p></div>
+                        <button class="button" onclick="toggleComplete(this, 'Add new emoji ✋')">Completed</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="header">Google LLC</div>
+                    <div class="title">Integrate OpenAI API</div>
+                    <div class="description">Debug using Chrome DevTools, check for overlapping...</div>
+                  <div class="sidebyside">   
+                    <div class="deadline">Deadline<p>21 March 2025</p></div>
+                    <button class="button" onclick="toggleComplete(this, 'Integrate OpenAI API')">Completed</button>
+                  </div>
+                </div>
+                <div class="card">
+                    <div class="header">Glassdoor</div>
+                    <div class="title">Improve Job Searching</div>
+                    <div class="description">Debug using Chrome DevTools, check for overlapping...</div>
+                    <div class="sidebyside">   
+                        <div class="deadline">Deadline<p>21 March 2025</p></div>
+                        <button class="button" onclick="toggleComplete(this, 'Integrate OpenAI API')">Completed</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="history-container">
+          <div class="history-header">
+              <img src="assets/activity.png">
+              <div>Activity Log</div>
+          </div>
+             <button class="clear-history" onclick="clearHistory()">Clear History</button>
+          <div class="history-notifications" id="history-notifications">
+          </div>
+    </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const themeButton = document.querySelector(".circle-img");
+          const body = document.body;
+
+          const colors = ["#d4f5dc", "#cce7ff", "#ffe5b4", "#e0bbf5", "rgb(240, 241, 255)"];
+    
+          let themeIndex = localStorage.getItem("themeIndex") ? parseInt(localStorage.getItem("themeIndex")) : colors.length - 1;
+    
+          body.style.backgroundColor = colors[themeIndex];
+
+          themeButton.addEventListener("click", function () {
+          themeIndex = (themeIndex + 1) % colors.length;
+          body.style.backgroundColor = colors[themeIndex];
+          localStorage.setItem("themeIndex", themeIndex);
+          });
+        });
+
+        function toggleComplete(button, title) {
+          button.classList.toggle("completed");
+
+          let taskAssigned = document.getElementById("tasks-assigned");
+          let taskCount = document.getElementById("task-count");
+
+          let count = parseInt(taskAssigned.innerText);
+          let completedTasks = document.querySelectorAll(".button.completed").length;
+          let totalTasks = document.querySelectorAll(".button").length;
+
+          taskAssigned.innerText = button.classList.contains("completed") ? count - 1 : count + 1;
+          taskCount.innerText = completedTasks;
+
+          if (button.classList.contains("completed")) {
+             button.disabled = true;
+          }
+
+          const historyNotifications = document.getElementById("history-notifications");
+          const notification = document.createElement("div");
+          const currentTime = new Date().toLocaleTimeString();
+          notification.classList.add("history-notification");
+          notification.innerHTML = `You have completed the task: <b>${title}</b> at ${currentTime}`;
+          historyNotifications.appendChild(notification);
+
+          alert(`You have completed your task: ${title}`);
+
+          if (completedTasks === totalTasks) {
+              setTimeout(() => {
+                 alert("Congratulations! All tasks are completed!");
+              }, 500);
+          }
+        }
+
+        function clearHistory() {
+            const historyNotifications = document.getElementById("history-notifications");
+            historyNotifications.innerHTML = '';
+        }
+
+        function updateDate() {
+            const now = new Date();
+            document.getElementById("current-day").innerText = now.toLocaleDateString(undefined, { weekday: 'short' });
+            document.getElementById("current-date").innerText = now.toLocaleDateString(undefined, { month: 'short', day: '2-digit', year: 'numeric' });
+        }
+        updateDate();
+
+        function goToBlogs() {
+            window.location.href = "Blogs.html";
+        }
+    </script>
+</body>
+</html>
