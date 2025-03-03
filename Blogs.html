@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: rgb(240, 241, 255);
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #ffff;
+            border-radius: 15px;
+            color: black;
+            width: 90%;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .left-side {
+           display: flex;
+           align-items: center;
+        }
+
+        .nav-img {
+           width: 40px;
+           height: 40px;
+           margin-right: 10px;
+        }
+ 
+        .nav-text {
+           font-size: 30px;
+           margin-top: 5px;
+        }
+
+        .right-side {
+           display: flex;
+           align-items: center;
+        }
+
+        .back-button {
+            background-color: #4c6ef5;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        main {
+            width: 93%;
+            margin: 20px auto;
+        }
+
+        .blog-post {
+            background: white;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            margin-top: 1px;
+            margin-bottom: 2px;
+        }
+
+        h2 {
+            color: black;
+            font-size: 20px;
+            border-bottom: 2px dashed grey;
+            padding-bottom: 20px;
+        }
+
+        p {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="left-side">
+          <img src="assets/logo.png" class="nav-img">
+          <span class="nav-text">Dev<b>Board</b></span>
+        </div>
+        <div class="right-side">
+            <button class="back-button" onclick="goBackToDesk()">Back to Desk</button>
+        </div>
+    </div>
+
+    <h1>Blogs</h1>
+
+    <main>
+        <section class="blog-post">
+            <h2>Question-1: What are the different ways to select an element in the DOM?</h2>
+            <p>Elements in the DOM can be selected using methods like document.getElementById(), document.getElementsByClassName(), document.getElementsByTagName(), document.querySelector(), and document.querySelectorAll().</p>
+        </section>
+
+        <section class="blog-post">
+            <h2>Question-2: What is the difference between innerHTML, innerText, and textContent?</h2>
+            <p>innerHTML returns or sets the HTML content inside an element, including any nested elements. InnerText returns or sets only the visible text content, ignoring hidden elements. textContent returns or sets the entire text content, including hidden elements but without parsing HTML.</p>
+        </section>
+
+        <section class="blog-post">
+            <h2>Question-3: What is event delegation in the DOM?</h2>
+            <p>Event delegation is a technique in which a parent element handles events for its child elements using event bubbling. This improves efficiency and is useful for dynamically added elements.</p>
+        </section>
+
+        <section class="blog-post">
+            <h2>Question-4: What is event bubbling in the DOM?</h2>
+            <p>Event bubbling is a propagation mechanism where an event starts from the target element and bubbles up to its ancestors, triggering event listeners on each ancestor in the hierarchy.</p>
+        </section>
+
+        <section class="blog-post">
+            <h2>Question-5: How do you create, add, and remove elements using JavaScript?</h2>
+            <p>Elements can be created using document.createElement(), added with appendChild() or insertBefore(), and removed with removeChild() or remove().</p>
+        </section>
+    </main>
+    
+    <script> 
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Blog page loaded successfully!");
+        });
+
+        function goBackToDesk() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
